@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,9 +18,7 @@ public class DemoController {
 
     @RequestMapping(path = "/url1", method = RequestMethod.GET)
     public DeferredResult<ResponseEntity<String>> demoPost() {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Location", "http://localhost:8080/url2");
-        ResponseEntity<String> responseEntity = new ResponseEntity<>("OK/Post", httpHeaders, HttpStatus.SEE_OTHER);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>("OK/url1", HttpStatus.OK);
         DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<>();
         deferredResult.setResult(responseEntity);
         return deferredResult;
@@ -39,5 +36,4 @@ public class DemoController {
 
         return deferredResult;
     }
-
 }
